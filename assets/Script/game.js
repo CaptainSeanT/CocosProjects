@@ -2,7 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        score: {
+        scorelabel: {
             default: null,
             type: cc.Label
         },
@@ -12,25 +12,20 @@ cc.Class({
             type: cc.Prefab
         },
 
-
+        //testlab: cc.Label,
+        testBtn: cc.Button,
 
     },
 
     // use this for initialization
     onLoad: function () {
 
-        //this.score.string = "test";
-        /*
-        this.leftkey = false;
-        this.rightkey = false;
-        this.upkey = false;
-        this.downkey = false;
-        */
+        //this.testlab.string = "worked";
         this.enemyDirection = "",
         this.attackDirection = "",
         this.keypressed = false,
 
-        this.scroe = 0;
+        this.score = 0;
 
         // 初始化键盘输入监听
         this.setInputControl();
@@ -46,6 +41,7 @@ cc.Class({
 
         this.node.addChild(newEnemy);
         newEnemy.setPosition(this.getNewEnemyPosition());
+        newEnemy.setScale(0.5, 0.5);
         newEnemy.rotation = this.randRotation();
 
         console.log("this enemy's direction is " + this.enemyDirection);
@@ -55,7 +51,7 @@ cc.Class({
     },
 
     getNewEnemyPosition: function () {
-        return cc.p(0,0);
+        return cc.p(0,200);
     },
 
     randRotation: function () {
@@ -80,34 +76,17 @@ cc.Class({
 
     },
 
-
-
     // called every frame
     update: function (dt) {
-
-        //console.log("test222" + this.keypressed);
-/*
-        if (this.leftkey) {
-            this.score.string = "worked";
-            this.newEnemy.killEnemy();
-            this.score.string = "left";
-        } else {
-            this.score.string = "Scroe: 0";
-        }
-*/
-        /*        
-        if (this.checkEnemyHP() == 0) {
-            this.killEnemy();
-            this.spawnNewEnemy();
-        };
-        */
     },
 
     gainScore: function() {
+        this.score += 1;
+        console.log("score is : " + this.score);
+        this.scorelabel.string = "Score: " + this.score.toString();
+
 
     },
-
-
 
     setInputControl: function () {
         var self = this;
@@ -118,29 +97,6 @@ cc.Class({
             onKeyPressed: function(keyCode, event) {
                 self.keypressed = true;
                 switch(keyCode) {
-                    /*case cc.KEY.left:
-                        self.leftkey = true;
-                        self.rightkey = false;                       
-                        self.upkey = false;
-                        self.downkey = false;
-                        break;
-                    case cc.KEY.right:
-                        self.leftkey = false;
-                        self.rightkey = true;                       
-                        self.upkey = false;
-                        self.down = false;
-                        break;
-                    case cc.KEY.up:
-                        self.leftkey = false;
-                        self.rightkey = false;                       
-                        self.upkey = true;
-                        self.down = false;
-                        break;
-                    case cc.KEY.down:
-                        self.leftkey = false;
-                        self.rightkey = false;                       
-                        self.upkey = false;
-                        self.down = true;break;*/
                     case cc.KEY.left:
                         self.attackDirection = "left";
                         break;
@@ -156,25 +112,9 @@ cc.Class({
                 }
             },
             // unset a flag when key released
-            onKeyReleased: function(keyCode, event) {
-                
+            onKeyReleased: function(keyCode, event) {   
                 self.keypressed = false;
                 self.attackDirection = "";
-
-                /*switch(keyCode) {
-                    case cc.KEY.left:
-                        self.leftkey = false;
-                        break;
-                    case cc.KEY.right:
-                        self.rightkey = false;
-                        break;
-                    case cc.KEY.up:
-                        self.upkey = false;
-                        break;
-                    case cc.KEY.down:
-                        self.downkey = false;
-                        break;
-                }*/
             }
         }, self.node);
     },

@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "1b63ba50-fa27-436a-92e6-a6c383a3a52c",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "スクリーンショット 2018-01-15 10.41.56": {
+      "ver": "1.0.3",
+      "uuid": "bde3dfef-6332-4ba8-93fb-43057d28501d",
+      "rawTextureUuid": "1b63ba50-fa27-436a-92e6-a6c383a3a52c",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 81,
+      "height": 85,
+      "rawWidth": 81,
+      "rawHeight": 85,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
